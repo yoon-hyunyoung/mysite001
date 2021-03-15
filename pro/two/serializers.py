@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from .models import User
+# from .models import User
 from rest_framework.serializers import ModelSerializer
 
 User=get_user_model()
@@ -18,3 +18,25 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model=get_user_model()
         fields=['username','email','password']
+
+#############################################################
+User = get_user_model()
+
+class SingupSerializer(ModelSerializer):
+
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = User
+        fields = ['username', 'password', 'email']
+    
+    def create(self, validated_data):
+        user = User.objects.create(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            # phone_number=validated_data['phone_number']
+        )  
+        #중요!!!
+        user.set_password(validated_data['password'])
+        user.save()
+        return user

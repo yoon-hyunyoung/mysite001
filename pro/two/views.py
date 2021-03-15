@@ -8,7 +8,7 @@ from rest_framework.response import Response
 
 
 from .models import User
-from .serializers import UserSerializer #, SingupSerializer
+from .serializers import UserSerializer , SingupSerializer
 # Create your views here.
 #회원가입
 @api_view(['GET','POST'])
