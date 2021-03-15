@@ -1,0 +1,13 @@
+#img1{width: 23px; 
+    height: 23px;
+
+    
+    }
+td{
+    border: 1px rgba(166, 204, 27,0.1) solid;
+}
+thead{
+    background-color: cadetblue;
+    color: cornsilk;
+    font-weight: 700;
+}
